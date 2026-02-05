@@ -1,13 +1,16 @@
-export default function Button({ as: As = "button", className = "", ...props }) {
+export default function Button({ as: As = "button", className = "", variant = "primary", ...props }) {
+  const styles =
+    variant === "ghost"
+      ? "bg-black/5 hover:bg-black/10 text-ink border border-line"
+      : "bg-accent hover:opacity-90 text-white border border-transparent";
+
   return (
     <As
       className={
-        "px-4 py-2 rounded-lg font-semibold tracking-wide " +
-        "text-ink-950 bg-gradient-to-r from-gold-400 to-gold-600 " +
-        "hover:opacity-95 active:opacity-90 transition shadow-glow " +
-        className
+        "px-4 py-2 rounded-full font-semibold text-sm transition " + styles + " " + className
       }
       {...props}
     />
   );
 }
+

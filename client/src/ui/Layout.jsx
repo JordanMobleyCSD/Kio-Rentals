@@ -7,10 +7,8 @@ const NavItem = ({ to, children }) => (
   <NavLink
     to={to}
     className={({ isActive }) =>
-      `px-3 py-2 rounded-lg text-sm font-medium tracking-wide transition
-       ${isActive
-         ? "bg-gold-500/10 text-gold-200 ring-1 ring-gold-500/20"
-         : "text-slate-200 hover:bg-white/5 hover:text-white"}`
+      `px-3 py-2 rounded-full text-sm font-medium transition
+       ${isActive ? "bg-black/5 text-ink" : "text-black/70 hover:bg-black/5 hover:text-ink"}`
     }
   >
     {children}
@@ -40,13 +38,13 @@ export default function Layout() {
 
   return (
     <div className="min-h-screen">
-      <header className="sticky top-0 z-50 backdrop-blur bg-ink-950/70 border-b border-white/10">
+      <header className="sticky top-0 z-50 bg-white/80 backdrop-blur border-b border-line">
         <div className="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between gap-3">
-          <Link to="/" className="flex items-center gap-3">
-            <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-gold-400 to-gold-600 shadow-[0_0_0_1px_rgba(245,158,11,.35)]" />
+          <Link to="/" className="flex items-center gap-2">
+            <div className="h-9 w-9 rounded-2xl bg-black" />
             <div className="leading-tight">
-              <div className="font-semibold tracking-[0.02em]">KioRentals</div>
-              <div className="text-xs text-slate-300 -mt-0.5">Luxury peer-to-peer rentals</div>
+              <div className="font-semibold">KioRentals</div>
+              <div className="text-xs text-black/60 -mt-0.5">Simple car sharing</div>
             </div>
           </Link>
 
@@ -59,12 +57,12 @@ export default function Layout() {
           <div className="flex items-center gap-2">
             {me ? (
               <>
-                <div className="hidden sm:block text-sm text-slate-200">
-                  Welcome, <span className="font-medium text-gold-200">{me.fullName}</span>
+                <div className="hidden sm:block text-sm text-black/70">
+                  Hi, <span className="font-medium text-ink">{me.fullName}</span>
                 </div>
                 <button
                   onClick={logout}
-                  className="px-3 py-2 rounded-lg text-sm bg-white/5 hover:bg-white/10 border border-white/10"
+                  className="px-3 py-2 rounded-full text-sm bg-black/5 hover:bg-black/10 border border-line"
                 >
                   Logout
                 </button>
@@ -73,14 +71,13 @@ export default function Layout() {
               <>
                 <Link
                   to="/login"
-                  className="px-3 py-2 rounded-lg text-sm bg-white/5 hover:bg-white/10 border border-white/10"
+                  className="px-3 py-2 rounded-full text-sm bg-black/5 hover:bg-black/10 border border-line"
                 >
                   Log in
                 </Link>
                 <Link
                   to="/signup"
-                  className="px-3 py-2 rounded-lg text-sm font-semibold text-ink-950
-                             bg-gradient-to-r from-gold-400 to-gold-600 hover:opacity-95 shadow-[0_10px_30px_rgba(0,0,0,.45)]"
+                  className="px-3 py-2 rounded-full text-sm font-semibold text-white bg-accent hover:opacity-90"
                 >
                   Sign up
                 </Link>
@@ -89,7 +86,7 @@ export default function Layout() {
           </div>
         </div>
 
-        <div className="md:hidden border-t border-white/10">
+        <div className="md:hidden border-t border-line">
           <div className="mx-auto max-w-6xl px-2 py-2 flex items-center gap-1">
             <NavItem to="/search">Search</NavItem>
             <NavItem to="/trips">Trips</NavItem>
@@ -98,17 +95,17 @@ export default function Layout() {
         </div>
       </header>
 
-      <main className="mx-auto max-w-6xl px-4 py-8">
+      <main className="mx-auto max-w-6xl px-4 py-10">
         <Outlet />
       </main>
 
-      <footer className="border-t border-white/10">
-        <div className="mx-auto max-w-6xl px-4 py-10 text-sm text-slate-300 flex flex-col sm:flex-row gap-3 justify-between">
+      <footer className="border-t border-line bg-white">
+        <div className="mx-auto max-w-6xl px-4 py-10 text-sm text-black/60 flex flex-col sm:flex-row gap-3 justify-between">
           <div>© {new Date().getFullYear()} KioRentals — Demo</div>
           <div className="flex gap-4">
-            <a className="hover:text-gold-200" href="https://render.com" target="_blank" rel="noreferrer">Render</a>
-            <a className="hover:text-gold-200" href="https://react.dev" target="_blank" rel="noreferrer">React</a>
-            <a className="hover:text-gold-200" href="https://expressjs.com" target="_blank" rel="noreferrer">Express</a>
+            <a href="https://render.com" target="_blank" rel="noreferrer">Render</a>
+            <a href="https://react.dev" target="_blank" rel="noreferrer">React</a>
+            <a href="https://expressjs.com" target="_blank" rel="noreferrer">Express</a>
           </div>
         </div>
       </footer>
