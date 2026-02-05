@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: kiorentals
+    env: node
+    plan: free
+    buildCommand: npm install && npm run build && npm run seed
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: JWT_SECRET
+        generateValue: true
+      - key: DB_PATH
+        value: ./data/app.db
+      - key: CORS_ORIGIN
+        value: ""
