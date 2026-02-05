@@ -7,8 +7,10 @@ const NavItem = ({ to, children }) => (
   <NavLink
     to={to}
     className={({ isActive }) =>
-      `px-3 py-2 rounded-md text-sm font-medium transition
-      ${isActive ? "bg-white/10 text-white" : "text-slate-200 hover:bg-white/5 hover:text-white"}`
+      `px-3 py-2 rounded-lg text-sm font-medium tracking-wide transition
+       ${isActive
+         ? "bg-gold-500/10 text-gold-200 ring-1 ring-gold-500/20"
+         : "text-slate-200 hover:bg-white/5 hover:text-white"}`
     }
   >
     {children}
@@ -38,13 +40,13 @@ export default function Layout() {
 
   return (
     <div className="min-h-screen">
-      <header className="sticky top-0 z-50 backdrop-blur bg-slate-950/70 border-b border-white/10">
+      <header className="sticky top-0 z-50 backdrop-blur bg-ink-950/70 border-b border-white/10">
         <div className="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between gap-3">
-          <Link to="/" className="flex items-center gap-2">
-            <div className="h-9 w-9 rounded-xl bg-gradient-to-br from-indigo-500 to-cyan-400" />
+          <Link to="/" className="flex items-center gap-3">
+            <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-gold-400 to-gold-600 shadow-[0_0_0_1px_rgba(245,158,11,.35)]" />
             <div className="leading-tight">
-              <div className="font-semibold tracking-tight">KioRentals</div>
-              <div className="text-xs text-slate-300 -mt-0.5">Rent cars from real people</div>
+              <div className="font-semibold tracking-[0.02em]">KioRentals</div>
+              <div className="text-xs text-slate-300 -mt-0.5">Luxury peer-to-peer rentals</div>
             </div>
           </Link>
 
@@ -58,11 +60,11 @@ export default function Layout() {
             {me ? (
               <>
                 <div className="hidden sm:block text-sm text-slate-200">
-                  Hi, <span className="font-medium text-white">{me.fullName}</span>
+                  Welcome, <span className="font-medium text-gold-200">{me.fullName}</span>
                 </div>
                 <button
                   onClick={logout}
-                  className="px-3 py-2 rounded-md text-sm bg-white/10 hover:bg-white/15 border border-white/10"
+                  className="px-3 py-2 rounded-lg text-sm bg-white/5 hover:bg-white/10 border border-white/10"
                 >
                   Logout
                 </button>
@@ -71,13 +73,14 @@ export default function Layout() {
               <>
                 <Link
                   to="/login"
-                  className="px-3 py-2 rounded-md text-sm bg-white/10 hover:bg-white/15 border border-white/10"
+                  className="px-3 py-2 rounded-lg text-sm bg-white/5 hover:bg-white/10 border border-white/10"
                 >
                   Log in
                 </Link>
                 <Link
                   to="/signup"
-                  className="px-3 py-2 rounded-md text-sm bg-gradient-to-r from-indigo-500 to-cyan-400 text-slate-950 font-semibold"
+                  className="px-3 py-2 rounded-lg text-sm font-semibold text-ink-950
+                             bg-gradient-to-r from-gold-400 to-gold-600 hover:opacity-95 shadow-[0_10px_30px_rgba(0,0,0,.45)]"
                 >
                   Sign up
                 </Link>
@@ -103,9 +106,9 @@ export default function Layout() {
         <div className="mx-auto max-w-6xl px-4 py-10 text-sm text-slate-300 flex flex-col sm:flex-row gap-3 justify-between">
           <div>© {new Date().getFullYear()} KioRentals — Demo</div>
           <div className="flex gap-4">
-            <a className="hover:text-white" href="https://render.com" target="_blank" rel="noreferrer">Render</a>
-            <a className="hover:text-white" href="https://react.dev" target="_blank" rel="noreferrer">React</a>
-            <a className="hover:text-white" href="https://expressjs.com" target="_blank" rel="noreferrer">Express</a>
+            <a className="hover:text-gold-200" href="https://render.com" target="_blank" rel="noreferrer">Render</a>
+            <a className="hover:text-gold-200" href="https://react.dev" target="_blank" rel="noreferrer">React</a>
+            <a className="hover:text-gold-200" href="https://expressjs.com" target="_blank" rel="noreferrer">Express</a>
           </div>
         </div>
       </footer>
